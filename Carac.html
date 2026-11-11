@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Características - Termit</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        termit: {
+                            green: '#10b981',
+                            dark: '#090d16',
+                            card: '#111827',
+                            accent: '#34d399'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glow-effect {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(52, 211, 153, 0.03) 60%, transparent 80%);
+            border-radius: 50%;
+            z-index: 0;
+            filter: blur(60px);
+        }
+    </style>
+</head>
+<body class="bg-[#070b14] text-slate-100 min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-emerald-500 selection:text-slate-950">
+
+    <!-- Glowing Background Orbs -->
+    <div class="glow-effect top-[-10%] left-1/2 -translate-x-1/2 pointer-events-none"></div>
+
+    <!-- Header / Navbar -->
+    <header class="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between z-10">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                <i class="fa-solid fa-terminal text-white text-lg"></i>
+            </div>
+            <a href="index.html" class="text-xl font-extrabold tracking-tight text-white hover:text-emerald-400 transition-colors">termit</a>
+        </div>
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-400">
+            <a href="index.html" class="hover:text-emerald-400 transition-colors">Inicio</a>
+            <a href="Carac.html" class="text-emerald-400 font-semibold transition-colors">Características</a>
+        </nav>
+        <div>
+            <a href="termit.exe" download class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-emerald-500/50 transition-all shadow-sm">
+                <i class="fa-brands fa-windows mr-1.5 text-emerald-400"></i> Windows
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="w-full max-w-5xl mx-auto px-6 py-12 md:py-16 z-10 my-auto">
+        
+        <!-- Section Title -->
+        <div class="text-center mb-16">
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white mb-4">
+                Especificaciones y <span class="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Requisitos</span>
+            </h1>
+            <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">
+                Conoce todo lo que necesitas en tu equipo para que Termit funcione con el máximo rendimiento y estabilidad.
+            </p>
+        </div>
+
+        <!-- System Requirements Grid -->
+        <div class="mb-16">
+            <h2 class="text-xl font-bold text-white mb-6 flex items-center space-x-3">
+                <i class="fa-solid fa-microchip text-emerald-400"></i>
+                <span>Requisitos del Sistema (PC)</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- RAM Requirement -->
+                <div class="bg-slate-900/50 border border-slate-800/80 p-6 rounded-2xl backdrop-blur-sm flex items-start space-x-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl shrink-0">
+                        <i class="fa-solid fa-memory"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-white mb-1">Memoria RAM</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed"><strong class="text-slate-200">8 GB como mínimo</strong> recomendados en el sistema para alojar el servidor de Minecraft y mantener el rendimiento fluido del PC.</p>
+                    </div>
+                </div>
+                <!-- OS Requirement -->
+                <div class="bg-slate-900/50 border border-slate-800/80 p-6 rounded-2xl backdrop-blur-sm flex items-start space-x-4">
+                    <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 text-xl shrink-0">
+                        <i class="fa-brands fa-windows"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-white mb-1">Sistema Operativo</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">Windows 10 o Windows 11 (arquitectura de 64 bits obligatoria).</p>
+                    </div>
+                </div>
+                <!-- Processor Requirement -->
+                <div class="bg-slate-900/50 border border-slate-800/80 p-6 rounded-2xl backdrop-blur-sm flex items-start space-x-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-xl shrink-0">
+                        <i class="fa-solid fa-cpu"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-white mb-1">Procesador (CPU)</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">Procesador de doble núcleo a 2.5 GHz o superior para gestionar el servidor sin tirones.</p>
+                    </div>
+                </div>
+                <!-- Storage Requirement -->
+                <div class="bg-slate-900/50 border border-slate-800/80 p-6 rounded-2xl backdrop-blur-sm flex items-start space-x-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-xl shrink-0">
+                        <i class="fa-solid fa-hard-drive"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-white mb-1">Almacenamiento</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">Al menos 500 MB de espacio libre en disco (se recomienda disco SSD para una carga rápida de chunks).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced Features Section -->
+        <div>
+            <h2 class="text-xl font-bold text-white mb-6 flex items-center space-x-3">
+                <i class="fa-solid fa-star text-emerald-400"></i>
+                <span>Características Destacadas</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-slate-900/40 border border-slate-800/60 p-6 rounded-2xl backdrop-blur-sm">
+                    <div class="text-emerald-400 text-lg font-bold mb-2">01. Automatización Total</div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Termit configura automáticamente el entorno y las dependencias necesarias de Java en segundo plano.</p>
+                </div>
+                <div class="bg-slate-900/40 border border-slate-800/60 p-6 rounded-2xl backdrop-blur-sm">
+                    <div class="text-emerald-400 text-lg font-bold mb-2">02. Túneles Seguros</div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Evita abrir los puertos del router protegiendo tu red doméstica de ataques externos.</p>
+                </div>
+                <div class="bg-slate-900/40 border border-slate-800/60 p-6 rounded-2xl backdrop-blur-sm">
+                    <div class="text-emerald-400 text-lg font-bold mb-2">03. Bajo Consumo</div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Optimizado rigurosamente para no acaparar los recursos del equipo mientras juegas.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-7xl mx-auto px-6 py-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 z-10">
+        <p>&copy; 2026 elskilitoo. Todos los derechos reservados.</p>
+        <div class="flex space-x-6 mt-4 sm:mt-0">
+            <a href="index.html" class="hover:text-slate-400 transition-colors">Volver al inicio</a>
+        </div>
+    </footer>
+
+</body>
+</html>
