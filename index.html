@@ -4,368 +4,278 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>elskilitoo</title>
-    
+
+    <!-- Favicon real en SVG 8x8 nítido (actualizado también a PNG vía canvas para compatibilidad total) -->
+    <link id="favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='1' height='1' fill='%23b8b8b8'/%3E%3Crect x='1' y='0' width='1' height='1' fill='%23fff000'/%3E%3Crect x='2' y='0' width='1' height='1' fill='%23b0b0b0'/%3E%3Crect x='3' y='0' width='2' height='1' fill='%23fff000'/%3E%3Crect x='5' y='0' width='1' height='1' fill='%23b8b8b8'/%3E%3Crect x='6' y='0' width='1' height='1' fill='%23fff000'/%3E%3Crect x='7' y='0' width='1' height='1' fill='%23b8b8b8'/%3E%3Crect x='0' y='1' width='1' height='1' fill='%23f5e800'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%23d41300'/%3E%3Crect x='2' y='1' width='1' height='1' fill='%23c8bc00'/%3E%3Crect x='3' y='1' width='1' height='1' fill='%231ec214'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%232d33d4'/%3E%3Crect x='5' y='1' width='1' height='1' fill='%23f5e800'/%3E%3Crect x='6' y='1' width='1' height='1' fill='%2328b4e5'/%3E%3Crect x='7' y='1' width='1' height='1' fill='%23c8bc00'/%3E%3Crect x='0' y='2' width='8' height='1' fill='%23c8bc00'/%3E%3Crect x='0' y='3' width='8' height='1' fill='%23d0d0d0'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%23c4c4c4'/%3E%3Crect x='1' y='4' width='2' height='1' fill='%23454545'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%23c8c8c8'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%23bdbdbd'/%3E%3Crect x='5' y='4' width='2' height='1' fill='%23454545'/%3E%3Crect x='7' y='4' width='1' height='1' fill='%23c4c4c4'/%3E%3Crect x='0' y='5' width='2' height='1' fill='%23a8a8a8'/%'6' y='7' width='2' height='1' fill='%23b8b8b8'/%3E%3C/svg%3E">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Fuentes: Inter y JetBrains Mono para el estilo tech limpio -->
+
+    <!-- Fuentes Google Fonts: JetBrains Mono e Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Variables principales de tema Cian */
+        /* Configuración de tema oscuro y acentos cian */
         :root {
             --bg-main: #0b0d10;
             --card-bg: #12151a;
-            --card-border: #1e242d;
+            --card-border: rgba(255, 255, 255, 0.06);
             --accent-cyan: #00e5ff;
-            --accent-cyan-soft: rgba(0, 229, 255, 0.25);
-            --accent-cyan-glow: rgba(0, 229, 255, 0.14);
         }
 
         body {
             background-color: var(--bg-main);
-            /* Sutil resplandor radial cian en la parte superior igual que la referencia */
-            background-image: radial-gradient(circle at 50% 0%, var(--accent-cyan-glow) 0%, transparent 55%);
+            background-image: radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.11) 0%, transparent 55%);
             color: #f8fafc;
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 2rem 1rem 4rem;
         }
 
         .font-mono-tech {
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Tarjeta oscura centrada con borde sutil */
-        .profile-card {
+        /* Tarjeta principal centrada */
+        .main-card {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 40px rgba(0, 229, 255, 0.04);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 16px;
+            max-width: 680px;
+            padding: 40px 32px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 40px rgba(0, 229, 255, 0.03);
         }
 
-        .profile-card:hover {
-            border-color: rgba(0, 229, 255, 0.3);
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 45px rgba(0, 229, 255, 0.07);
+        /* Foto de perfil circular pixel-art con borde y resplandor cian */
+        #profile-avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 9999px;
+            border: 2px solid var(--accent-cyan);
+            box-shadow: 0 0 22px rgba(0, 229, 255, 0.35), 0 0 8px rgba(0, 229, 255, 0.2);
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            object-fit: cover;
+            display: block;
         }
 
-        /* Barra de búsqueda estilo captura */
-        .search-box {
+        /* Separador horizontal sutil */
+        .subtle-divider {
+            border: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        /* Buscador oscuro redondeado */
+        .search-wrapper {
             background-color: #161a21;
-            border: 1px solid #222833;
+            border: 1px solid rgba(255, 255, 255, 0.07);
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .search-box:focus-within {
-            border-color: rgba(0, 229, 255, 0.6);
+        .search-wrapper:focus-within {
+            border-color: rgba(0, 229, 255, 0.55);
             box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.12);
         }
 
-        /* Tarjeta individual de proyecto estilo captura */
-        .project-item {
+        /* Tarjeta individual de proyecto */
+        .project-link {
             background-color: #151920;
-            border: 1px solid #212732;
-            transition: all 0.22s ease;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease, transform 0.22s ease;
         }
 
-        .project-item:hover {
+        .project-link:hover {
             background-color: #181e27;
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.12);
+            box-shadow: 0 0 18px rgba(0, 229, 255, 0.14);
             transform: translateY(-1px);
         }
 
-        .project-item:hover .project-arrow {
+        .project-link:hover .project-arrow {
             color: var(--accent-cyan);
             transform: translate(2px, -2px);
         }
-
-        .font-mono-tech {
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Tarjeta oscura centrada con borde sutil */
-        .profile-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 40px rgba(0, 229, 255, 0.04);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .profile-card:hover {
-            border-color: rgba(0, 229, 255, 0.35);
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 45px rgba(0, 229, 255, 0.08);
-        }
-
-        /* Avatar circular con borde cian y brillo exterior */
-        .avatar-ring {
-            width: 116px;
-            height: 116px;
-            border-radius: 9999px;
-            border: 2.5px solid var(--accent-cyan);
-            box-shadow: 0 0 22px var(--accent-cyan-soft), inset 0 0 12px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            position: relative;
-            background-color: #181c24;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .avatar-ring:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.45);
-        }
-
-        .pixel-avatar {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            image-rendering: pixelated;
-            image-rendering: crisp-edges;
-            display: block;
-        }
     </style>
 </head>
-<body>
+<body class="flex flex-col items-center justify-start px-4 py-10 sm:py-14">
 
-    <!-- Notificación discreta al copiar o cambiar foto -->
-    <div id="status-toast" class="fixed bottom-5 right-5 z-50 px-4 py-2.5 rounded-xl bg-[#12151a] border border-[#00e5ff]/50 text-xs font-mono-tech text-[#00e5ff] shadow-lg opacity-0 translate-y-3 pointer-events-none transition-all duration-300">
-        Copiado al portapapeles
-    </div>
+    <!-- Contenedor principal único centrado (sin barras ni elementos por encima) -->
+    <main class="w-full flex justify-center">
+        <section class="main-card w-full">
 
-    <!-- Contenedor Principal Alineado Arriba -->
-    <main class="w-full max-w-3xl mx-auto">
-        <section class="profile-card rounded-2xl px-5 py-9 sm:px-10 sm:py-11 relative overflow-hidden">
-            
-            <!-- Sutil línea de brillo cian en el borde superior de la tarjeta -->
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-[#00e5ff]/60 to-transparent"></div>
-
-            <!-- Cabecera Superior: Foto de Perfil + Nombre Grande (sin subtítulos debajo) -->
+            <!-- Cabecera centrada dentro de la tarjeta -->
             <header class="flex flex-col items-center text-center">
-                <div class="avatar-ring mb-5 cursor-pointer group" onclick="document.getElementById('custom-avatar-input').click()" title="Tu perfil (haz clic si deseas probar otra imagen)">
-                    <img 
-                        id="avatar-img" 
-                        alt="Foto de perfil de elskilitoo" 
-                        class="pixel-avatar"
-                    >
-                    <input type="file" id="custom-avatar-input" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
-                </div>
-
-                <h1 
-                    onclick="copyUsername()" 
-                    title="Haz clic para copiar el nombre"
-                    class="font-mono-tech text-3xl sm:text-4xl font-bold text-white tracking-tight cursor-pointer hover:text-[#00e5ff] transition-colors select-all"
+                <img
+                    id="profile-avatar"
+                    alt="Avatar de elskilitoo"
+                    width="96"
+                    height="96"
                 >
+                <h1 class="font-mono-tech text-2xl sm:text-3xl font-bold text-white tracking-tight mt-4">
                     elskilitoo
                 </h1>
             </header>
 
-            <!-- Separador Horizontal Sutil -->
-            <hr class="border-t border-[#1f242d] my-8">
+            <!-- Separador horizontal sutil -->
+            <hr class="subtle-divider my-8">
 
-            <!-- Barra de Búsqueda Funcional -->
+            <!-- Buscador interactivo en tiempo real -->
             <div class="mb-7">
                 <label for="project-search" class="sr-only">Filtrar proyectos o enlaces</label>
-                <div class="search-box flex items-center gap-3 px-4 py-3 rounded-xl">
-                    <span class="text-base select-none" aria-hidden="true">🔍</span>
-                    <input 
-                        type="text" 
-                        id="project-search" 
-                        oninput="filterProjects()"
-                        placeholder="Filtrar proyectos o enlaces..." 
+                <div class="search-wrapper flex items-center gap-3 px-4 py-3 rounded-xl">
+                    <span class="text-sm select-none" aria-hidden="true">🔍</span>
+                    <input
+                        type="text"
+                        id="project-search"
+                        placeholder="Filtrar proyectos o enlaces..."
                         autocomplete="off"
                         class="w-full bg-transparent text-sm text-slate-200 placeholder-slate-500 focus:outline-none font-mono-tech"
                     >
-                    <button 
-                        id="clear-search-btn" 
-                        type="button"
-                        onclick="clearSearch()" 
-                        class="hidden text-xs font-mono-tech text-slate-400 hover:text-[#00e5ff] px-1.5 py-0.5 rounded transition-colors"
-                        title="Limpiar búsqueda"
-                    >
-                        ✕
-                    </button>
                 </div>
             </div>
 
-            <!-- Encabezado de Sección: MIS PROYECTOS + Badge -->
+            <!-- Encabezado de sección de proyectos -->
             <div class="flex items-center gap-2.5 mb-4">
-                <span class="text-base select-none" aria-hidden="true">🚀</span>
+                <span class="text-sm select-none" aria-hidden="true">🚀</span>
                 <h2 class="font-mono-tech text-xs sm:text-sm font-bold uppercase tracking-widest text-slate-300">
                     MIS PROYECTOS
                 </h2>
-                <span id="projects-count" class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-mono-tech font-bold bg-[#1c222c] text-slate-300 border border-[#2a3240]">
+                <span id="projects-count" class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-mono-tech font-bold bg-[#1c222c] text-slate-300 border border-white/10">
                     1
                 </span>
             </div>
 
-            <!-- Lista de Proyectos -->
+            <!-- Lista de proyectos -->
             <div id="projects-list" class="flex flex-col gap-3">
-                <a 
-                    href="https://elskilitoo.github.io/termit" 
-                    target="_blank" 
+                <a
+                    href="https://elskilitoo.github.io/termit"
+                    target="_blank"
                     rel="noopener noreferrer"
                     data-title="termit convierte tu pc en un servidor de minecraft."
-                    class="project-item group flex items-center justify-between gap-4 px-4 py-3.5 sm:px-5 sm:py-4 rounded-xl text-left"
+                    class="project-link group flex items-center justify-between gap-4 px-4 py-3.5 sm:px-5 sm:py-4 rounded-xl"
                 >
                     <div class="flex items-center gap-3 min-w-0">
                         <span class="font-mono-tech text-sm font-bold text-[#00e5ff] shrink-0">&gt;</span>
-                        <span class="font-mono-tech text-sm sm:text-[15px] font-medium text-slate-100 group-hover:text-white truncate sm:whitespace-normal">
+                        <span class="font-mono-tech text-sm sm:text-[15px] font-medium text-slate-100 group-hover:text-white leading-snug">
                             Termit convierte tu pc en un servidor de minecraft.
                         </span>
                     </div>
-
-                    <div class="flex items-center shrink-0">
-                        <span class="project-arrow font-mono-tech text-sm text-slate-500 transition-transform duration-200" aria-hidden="true">
-                            ↗
-                        </span>
-                    </div>
+                    <span class="project-arrow font-mono-tech text-sm text-slate-500 shrink-0 transition-transform duration-200" aria-hidden="true">
+                        ↗
+                    </span>
                 </a>
             </div>
 
-            <!-- Mensaje discreto cuando el filtro no encuentra coincidencias -->
-            <div id="empty-search-state" class="hidden py-8 text-center">
-                <p class="font-mono-tech text-xs sm:text-sm text-slate-500">
-                    No se encontraron proyectos que coincidan con tu búsqueda.
-                </p>
-            </div>
+            <!-- Estado vacío cuando no hay coincidencias -->
+            <p id="empty-state" class="hidden py-6 text-center font-mono-tech text-xs sm:text-sm text-slate-500">
+                No se encontraron proyectos.
+            </p>
 
         </section>
     </main>
 
     <script>
-        /**
-         * Genera el PNG exacto 256x256 (escalado desde la matriz 8x8 sin suavizado)
-         * de la foto de perfil de elskilitoo y lo asigna directamente al elemento <img>.
-         */
-        function renderProfileAvatar() {
-            const pixelGrid = [
-                ['#b5b5b5', '#f5e600', '#a8a8a8', '#f5e600', '#f5e600', '#a8a8a8', '#f5e600', '#b5b5b5'],
-                ['#e6dc00', '#c91400', '#c2b500', '#24b314', '#2832c2', '#e6dc00', '#2db3e6', '#c2b500'],
-                ['#c2b500', '#c2b500', '#c2b500', '#c2b500', '#c2b500', '#c2b500', '#c2b500', '#c2b500'],
-                ['#cccccc', '#cccccc', '#cccccc', '#cccccc', '#cccccc', '#cccccc', '#cccccc', '#cccccc'],
-                ['#c2c2c2', '#454545', '#454545', '#c7c7c7', '#bdbdbd', '#454545', '#454545', '#c2c2c2'],
-                ['#a8a8a8', '#a8a8a8', '#b5b5b5', '#787878', '#787878', '#a8a8a8', '#a8a8a8', '#a8a8a8'],
-                ['#828282', '#454545', '#454545', '#454545', '#454545', '#454545', '#454545', '#828282'],
-                ['#b8b8b8', '#b8b8b8', '#cccccc', '#cccccc', '#cccccc', '#cccccc', '#b8b8b8', '#b8b8b8']
+        (function () {
+            /**
+             * Matriz exacta 8x8 del avatar pixel-art de elskilitoo
+             * (esqueleto con corona dorada y gemas).
+             */
+            const avatarPixels = [
+                ['#b8b8b8', '#fff000', '#b0b0b0', '#fff000', '#fff000', '#b8b8b8', '#fff000', '#b8b8b8'],
+                ['#f5e800', '#d41300', '#c8bc00', '#1ec214', '#2d33d4', '#f5e800', '#28b4e5', '#c8bc00'],
+                ['#c8bc00', '#c8bc00', '#c8bc00', '#c8bc00', '#c8bc00', '#c8bc00', '#c8bc00', '#c8bc00'],
+                ['#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0'],
+                ['#c4c4c4', '#454545', '#454545', '#c8c8c8', '#bdbdbd', '#454545', '#454545', '#c4c4c4'],
+                ['#a8a8a8', '#a8a8a8', '#b5b5b5', '#848484', '#848484', '#a8a8a8', '#a8a8a8', '#a8a8a8'],
+                ['#8e8e8e', '#454545', '#454545', '#454545', '#454545', '#454545', '#454545', '#8e8e8e'],
+                ['#b8b8b8', '#b8b8b8', '#cecece', '#cecece', '#cecece', '#cecece', '#b8b8b8', '#b8b8b8']
             ];
 
-            // Canvas base 8x8
-            const baseCanvas = document.createElement('canvas');
-            baseCanvas.width = 8;
-            baseCanvas.height = 8;
-            const baseCtx = baseCanvas.getContext('2d');
+            /**
+             * Dibuja el avatar 8x8 en un canvas 64x64 sin suavizado para generar
+             * un PNG dataURL nítido y asignarlo tanto al favicon como a la imagen de perfil.
+             */
+            function renderAvatarAndFavicon() {
+                try {
+                    const sourceCanvas = document.createElement('canvas');
+                    sourceCanvas.width = 8;
+                    sourceCanvas.height = 8;
+                    const srcCtx = sourceCanvas.getContext('2d');
 
-            for (let row = 0; row < 8; row++) {
-                for (let col = 0; col < 8; col++) {
-                    baseCtx.fillStyle = pixelGrid[row][col];
-                    baseCtx.fillRect(col, row, 1, 1);
+                    for (let y = 0; y < 8; y++) {
+                        for (let x = 0; x < 8; x++) {
+                            srcCtx.fillStyle = avatarPixels[y][x];
+                            srcCtx.fillRect(x, y, 1, 1);
+                        }
+                    }
+
+                    // Canvas 64x64 con píxeles completamente nítidos
+                    const outputCanvas = document.createElement('canvas');
+                    outputCanvas.width = 64;
+                    outputCanvas.height = 64;
+                    const outCtx = outputCanvas.getContext('2d');
+                    outCtx.imageSmoothingEnabled = false;
+                    outCtx.drawImage(sourceCanvas, 0, 0, 64, 64);
+
+                    const pngDataUrl = outputCanvas.toDataURL('image/png');
+
+                    // Asignar a la foto de perfil circular
+                    const profileImg = document.getElementById('profile-avatar');
+                    if (profileImg) {
+                        profileImg.src = pngDataUrl;
+                    }
+
+                    // Actualizar el favicon de la pestaña a PNG para compatibilidad total
+                    const faviconLink = document.getElementById('favicon');
+                    if (faviconLink) {
+                        faviconLink.type = 'image/png';
+                        faviconLink.href = pngDataUrl;
+                    }
+                } catch (error) {
+                    console.error('Error al generar el avatar y el favicon:', error);
                 }
             }
 
-            // Canvas escalado 256x256 con bordes nítidos (sin difuminado)
-            const hdCanvas = document.createElement('canvas');
-            hdCanvas.width = 256;
-            hdCanvas.height = 256;
-            const hdCtx = hdCanvas.getContext('2d');
-            hdCtx.imageSmoothingEnabled = false;
-            hdCtx.drawImage(baseCanvas, 0, 0, 256, 256);
+            /**
+             * Configura el filtrado en tiempo real de la lista de proyectos.
+             */
+            function setupProjectFilter() {
+                const searchInput = document.getElementById('project-search');
+                const projectItems = document.querySelectorAll('#projects-list .project-link');
+                const countBadge = document.getElementById('projects-count');
+                const emptyState = document.getElementById('empty-state');
 
-            const avatarImg = document.getElementById('avatar-img');
-            avatarImg.src = hdCanvas.toDataURL('image/png');
-        }
+                if (!searchInput) return;
 
-        // Ejecutar al cargar la página
-        renderProfileAvatar();
+                searchInput.addEventListener('input', function () {
+                    const query = searchInput.value.trim().toLowerCase();
+                    let visibleCount = 0;
 
-        // Filtrado en tiempo real de proyectos
-        function filterProjects() {
-            const input = document.getElementById('project-search');
-            const query = input.value.trim().toLowerCase();
-            const clearBtn = document.getElementById('clear-search-btn');
-            const items = document.querySelectorAll('#projects-list .project-item');
-            const emptyState = document.getElementById('empty-search-state');
-            const countBadge = document.getElementById('projects-count');
+                    projectItems.forEach(function (item) {
+                        const title = (item.getAttribute('data-title') || item.textContent).toLowerCase();
+                        if (title.includes(query)) {
+                            item.classList.remove('hidden');
+                            visibleCount++;
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    });
 
-            if (query.length > 0) {
-                clearBtn.classList.remove('hidden');
-            } else {
-                clearBtn.classList.add('hidden');
+                    if (countBadge) {
+                        countBadge.textContent = String(visibleCount);
+                    }
+
+                    if (emptyState) {
+                        emptyState.classList.toggle('hidden', visibleCount > 0);
+                    }
+                });
             }
 
-            let visibleCount = 0;
-            items.forEach(item => {
-                const title = item.getAttribute('data-title') || item.textContent.toLowerCase();
-                if (title.includes(query)) {
-                    item.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
-
-            countBadge.textContent = visibleCount;
-
-            if (visibleCount === 0) {
-                emptyState.classList.remove('hidden');
-            } else {
-                emptyState.classList.add('hidden');
-            }
-        }
-
-        // Limpiar el campo de búsqueda
-        function clearSearch() {
-            const input = document.getElementById('project-search');
-            input.value = '';
-            filterProjects();
-            input.focus();
-        }
-
-        // Permite cambiar la imagen temporalmente si se selecciona un archivo
-        function handleImageUpload(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('avatar-img').src = e.target.result;
-                showToast('Foto de perfil actualizada');
-            };
-            reader.readAsDataURL(file);
-        }
-
-        // Copiar el nombre al hacer clic sobre 'elskilitoo'
-        function copyUsername() {
-            const temp = document.createElement('textarea');
-            temp.value = 'elskilitoo';
-            temp.style.position = 'fixed';
-            temp.style.opacity = '0';
-            document.body.appendChild(temp);
-            temp.select();
-            try {
-                document.execCommand('copy');
-                showToast('Nombre "elskilitoo" copiado');
-            } catch (e) {}
-            document.body.removeChild(temp);
-        }
-
-        let toastTimer;
-        function showToast(text) {
-            const toast = document.getElementById('status-toast');
-            toast.textContent = text;
-            toast.classList.remove('opacity-0', 'translate-y-3');
-            toast.classList.add('opacity-100', 'translate-y-0');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => {
-                toast.classList.remove('opacity-100', 'translate-y-0');
-                toast.classList.add('opacity-0', 'translate-y-3');
-            }, 2200);
-        }
+            renderAvatarAndFavicon();
+            setupProjectFilter();
+        })();
     </script>
 </body>
 </html>
